@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Post } from "../../Service/Api";
 import { useNavigate } from "react-router-dom";
 
-function ChatContainer({ data }) {
+function ChatContainer({ data, saveMessage }) {
   const navigate = useNavigate();
-  const [refresh, setRefresh] = useState(0);
+  
 
   const [inputMessage, setInputMessage] = useState("");
 
@@ -21,20 +21,13 @@ function ChatContainer({ data }) {
 
     setStudentid(search[0].loginid);
   });
-  const saveMessage = () => {
-    let param = {
-      tablename: "messages",
-      courseid: userdata.courseid,
-      userid: userdata.loginid,
-      message: inputMessage,
-      hostid: studentid,
-    };
 
-    Post("save", param).then((data) => {
-      setRefresh(refresh + 1);
-      // navigate("/");
-    });
-  };
+
+
+  const save = () => {
+    saveMessage(userdata.courseid, userdata.loginid, inputMessage, studentid);
+  }
+ 
   return (
     /* MAIN CONTAINER */
 
@@ -95,7 +88,12 @@ function ChatContainer({ data }) {
                     ? "#4c1d95"
                     : "#134e4a",
                 marginBottom: "17px",
-                marginLeft: "20px",
+                marginLeft:userdata.loginid == messages.userid &&
+                messages.hostid == studentid
+                  ? "250px"
+                  : "20px",
+                
+                
                 borderRadius: "7px",
                 padding: "0px 17px",
                 display: "flex",
@@ -126,7 +124,7 @@ function ChatContainer({ data }) {
             marginBottom: "17px",
             width: "70%",
             height: "50px",
-            marginLeft: "20px",
+            marginLeft: "100px",
             borderRadius: "7px",
             border: "none",
             outline: "none",
@@ -136,7 +134,7 @@ function ChatContainer({ data }) {
         />
 
         <input
-          onClick={() => saveMessage()}
+          onClick={save}
           type="button"
           value="Sent"
           style={{

@@ -78,4 +78,16 @@ class StudentController extends Controller
         echo json_encode($result);
     }
 
+
+    public function getMessagesByCourseId(Request $request){
+        $result = DB::table('messages')
+        ->select('messages.message','student.username','student.loginid','messages.userid','messages.hostid')
+        ->leftJoin('student','student.loginid','messages.userid')
+        ->where('messages.courseid',$request->courseid)
+        ->orderBy('messages.id')
+        ->get();
+
+        echo json_encode($result);
+    }
+
 }

@@ -9,6 +9,9 @@ function MessageList() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [dummymessages, setDummyMessages] = useState([]);
   const userdata = JSON.parse(localStorage.getItem("userdata"));
+  const [refresh, setRefresh] = useState(0);
+
+
   useEffect(() => {
     Post("getmessagesbycourseid", { courseid: userdata.courseid }).then(
       (data) => {
@@ -24,7 +27,7 @@ function MessageList() {
         setUniqueUsers(unique);
       }
     );
-  }, []);
+  }, [refresh]);
 
   const changeMessage = (loginid) => {
     setIsLoaded(true);
@@ -35,6 +38,24 @@ function MessageList() {
 
     setMessages(message);
   };
+
+/* SAVE MESSAGE */
+
+const saveMessage = (courseid, userid, message, hostid) => {
+  let param = {
+    tablename: "messages",
+    courseid: courseid,
+    userid: userid,
+    message:message,
+    hostid: hostid,
+  };
+
+  Post("save", param).then((data) => {
+    setRefresh(refresh + 1);
+    // navigate("/");
+  });
+};
+  
 
   return (
     <>
@@ -62,7 +83,7 @@ function MessageList() {
           );
         })}
       </div>
-      {isLoaded && <ChatContainer data={messages} />}
+      {isLoaded && <ChatContainer saveMessage={saveMessage} data={messages} />}
     </>
   );
 }
