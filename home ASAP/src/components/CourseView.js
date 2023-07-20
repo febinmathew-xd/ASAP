@@ -10,6 +10,7 @@ function CourseView() {
   const [tutorials, setTutorials] = useState([]);
   const [isloading, setIsloading] = useState(true);
   const [refresh, setRefresh] = useState(0);
+  const [showMessage, setShowMessage] = useState(false);
   const [inputMessage, setInputMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const location = useLocation();
@@ -181,11 +182,11 @@ function CourseView() {
 
           {/* DOUBTS HEADER */}
 
-            <h5 style={{backgroundColor:'white', color:'black', fontSize:'18px', width:'130px', textAlign:'center', padding:'5px 10px', marginTop:'20px', borderRadius:'7px'}}>Ask Doubts</h5>
+            <h5 onClick={()=>{setShowMessage(!showMessage)}} style={{backgroundColor:'white', color:'black', fontSize:'18px', width:'130px', textAlign:'center', padding:'5px 10px', marginTop:'20px', borderRadius:'7px', cursor:'pointer'}}>Ask Doubts</h5>
 
             {/* DOUBT CHAT CONTAINER */}
 
-
+          {showMessage && 
             <div className="question-container" style={{width:'500px', height:'400px', backgroundColor:'whitesmoke', marginTop:'30px', borderRadius:'10px', paddingTop:'20px'}}>
 
               {/* MESSAGE CONTAINER */}
@@ -228,6 +229,8 @@ function CourseView() {
 
           
             </div>
+            }
+
           </div>
          
         </div>

@@ -13,7 +13,6 @@ function Messages() {
 
         <div style={{display:'flex'}}>
         <MessageList/>
-        <ChatContainer/>
         </div>
        
 

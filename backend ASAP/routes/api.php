@@ -49,6 +49,7 @@ Route::get('gettimetable', [TeacherController::class, 'getTimetable']);
 Route::get('getallexams', [TeacherController::class, 'getAllExams']);
 Route::get('getallpracticalsession', [TeacherController::class, 'getAllPracticalSessions']);
 Route::post('getstudentsresults', [TeacherController::class, 'getStudentResults']);
+Route::post('getmessagesbycourseid', [TeacherController::class, 'getMessagesByCourseId']);
 
 //StudentController
 
