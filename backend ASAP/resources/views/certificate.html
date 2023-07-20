@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <style>
+            @page {
+                margin: 0;
+            }
+
+            body {
+                background-color: #f1f1f1;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 50px;
+            }
+
+            .container {
+                background-color: #fff;
+                padding: 50px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                border: 5px solid #219ebc;
+            }
+
+            .header {
+                margin-bottom: 30px;
+            }
+
+            .header h1 {
+                color: #ff5722;
+                font-size: 28px;
+                margin: 0;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                border-bottom: 2px solid #ff5722;
+                padding-bottom: 10px;
+                display: inline-block;
+            }
+
+            .subheader {
+                margin-bottom: 30px;
+            }
+
+            .subheader p {
+                color: #666;
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .content {
+                margin-top: 50px;
+            }
+
+            .content h2 {
+                color: #3f51b5;
+                font-size: 24px;
+                margin: 0;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                border-bottom: 2px solid #3f51b5;
+                display: inline-block;
+                padding-bottom: 10px;
+            }
+
+            .content p {
+                color: #777;
+                font-size: 18px;
+                margin: 0;
+            }
+
+            .footer {
+                margin-top: 50px;
+            }
+
+            .footer p {
+                color: #666;
+                font-size: 16px;
+                margin: 0;
+            }
+
+            .underline {
+                border-bottom: 1px solid;
+                display: inline-block;
+            }
+
+            .border-color1 {
+                border-color: #9c27b0;
+            }
+
+            .border-color2 {
+                border-color: #e91e63;
+            }
+
+            .text-color1 {
+                color: #9c27b0;
+            }
+
+            .text-color2 {
+                color: #e91e63;
+            }
+        </style>
+    </head>
+    @php use Carbon\Carbon; @endphp
+
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>ASAP Certificate of Achievement</h1>
+            </div>
+
+            <div class="subheader">
+                <p>This is to certify that</p>
+            </div>
+
+            <div class="content" style="margin-bottom: 20px">
+                <h2>{{$data->username}}</h2>
+                <p>has successfully completed the course</p>
+                <h3 style="color: #4caf50">{{$data->title}}</h3>
+            </div>
+
+            <div class="footer">
+                <p>
+                    Date:
+                    <span class="text-color1"
+                        >{{ \Carbon\Carbon::now()->format('F d, Y') }}</span
+                    >
+                </p>
+                <p>
+                    Signature:
+
+                    <br />
+                    <br />
+                    <br />
+                    <img
+                        src="http://127.0.0.1:8000/public/img/admin_sign.png"
+                        width="150"
+                        height="150"
+                    />
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

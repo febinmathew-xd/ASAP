@@ -1,0 +1,459 @@
+/********** Template CSS **********/
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Pinyon+Script|Rochester");
+
+.cursive {
+  font-family: "Pinyon Script", cursive;
+}
+
+::placeholder {
+  color: #475569 !important ;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+.sans {
+  font-family: "Open Sans", sans-serif;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.block {
+  display: block;
+}
+
+.underline {
+  border-bottom: 1px solid #777;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.pm-empty-space {
+  height: 40px;
+  width: 100%;
+}
+
+.certificate-body {
+  padding: 20px 0;
+  background: #ccc;
+}
+
+.pm-certificate-container {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  background-color: #618597;
+  padding: 30px;
+  color: #333;
+  font-family: "Open Sans", sans-serif;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  /*background: -webkit-repeating-linear-gradient(
+    45deg,
+    #618597,
+    #618597 1px,
+    #b2cad6 1px,
+    #b2cad6 2px
+  );
+  background: repeating-linear-gradient(
+    90deg,
+    #618597,
+    #618597 1px,
+    #b2cad6 1px,
+    #b2cad6 2px
+  );*/
+
+  .outer-border {
+    width: 794px;
+    height: 594px;
+    position: absolute;
+    left: 50%;
+    margin-left: -397px;
+    top: 50%;
+    margin-top: -297px;
+    border: 2px solid #fff;
+  }
+
+  .inner-border {
+    width: 730px;
+    height: 530px;
+    position: absolute;
+    left: 50%;
+    margin-left: -365px;
+    top: 50%;
+    margin-top: -265px;
+    border: 2px solid #fff;
+  }
+
+  .pm-certificate-border {
+    position: relative;
+    width: 720px;
+    height: 520px;
+    padding: 0;
+    border: 1px solid #e1e5f0;
+    background-color: rgba(255, 255, 255, 1);
+    background-image: none;
+    left: 50%;
+    margin-left: -360px;
+    top: 50%;
+    margin-top: -260px;
+
+    .pm-certificate-block {
+      width: 650px;
+      height: 200px;
+      position: relative;
+      left: 50%;
+      margin-left: -325px;
+      top: 70px;
+      margin-top: 0;
+    }
+
+    .pm-certificate-header {
+      margin-bottom: 10px;
+    }
+
+    .pm-certificate-title {
+      position: relative;
+      top: 40px;
+
+      h2 {
+        font-size: 34px !important;
+      }
+    }
+
+    .pm-certificate-body {
+      padding: 20px;
+
+      .pm-name-text {
+        font-size: 20px;
+      }
+    }
+
+    .pm-earned {
+      margin: 15px 0 20px;
+      .pm-earned-text {
+        font-size: 20px;
+      }
+      .pm-credits-text {
+        font-size: 15px;
+      }
+    }
+
+    .pm-course-title {
+      .pm-earned-text {
+        font-size: 20px;
+      }
+      .pm-credits-text {
+        font-size: 15px;
+      }
+    }
+
+    .pm-certified {
+      font-size: 12px;
+
+      .underline {
+        margin-bottom: 5px;
+      }
+    }
+
+    .pm-certificate-footer {
+      width: 650px;
+      height: 100px;
+      position: relative;
+      left: 50%;
+      margin-left: -325px;
+      bottom: -105px;
+    }
+  }
+}
+
+:root {
+  --primary: #eb1616;
+  --secondary: #191c24;
+  --light: #6c7293;
+  --dark: #000000;
+}
+
+.back-to-top {
+  position: fixed;
+  display: none;
+  right: 45px;
+  bottom: 45px;
+  z-index: 99;
+}
+
+/*** Spinner ***/
+#spinner {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
+  z-index: 99999;
+}
+
+#spinner.show {
+  transition: opacity 0.5s ease-out, visibility 0s linear 0s;
+  visibility: visible;
+  opacity: 1;
+}
+
+/*** Button ***/
+.btn {
+  transition: 0.5s;
+}
+
+.btn-square {
+  width: 38px;
+  height: 38px;
+}
+
+.btn-sm-square {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-lg-square {
+  width: 48px;
+  height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+  border-radius: 50px;
+}
+
+/*** Layout ***/
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--secondary);
+  transition: 0.5s;
+  z-index: 999;
+}
+
+.content {
+  margin-left: 250px;
+  min-height: 100vh;
+  background: var(--dark);
+  transition: 0.5s;
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    margin-left: 0;
+  }
+
+  .sidebar.open {
+    margin-left: -250px;
+  }
+
+  .content {
+    width: calc(100% - 250px);
+  }
+
+  .content.open {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    margin-left: -250px;
+  }
+
+  .sidebar.open {
+    margin-left: 0;
+  }
+
+  .content {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/*** Navbar ***/
+.sidebar .navbar .navbar-nav .nav-link {
+  padding: 7px 20px;
+  color: var(--light);
+  font-weight: 500;
+  border-left: 3px solid var(--secondary);
+  border-radius: 0 30px 30px 0;
+  outline: none;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover,
+.sidebar .navbar .navbar-nav .nav-link.active {
+  color: var(--primary);
+  background: var(--dark);
+  border-color: var(--primary);
+}
+
+.sidebar .navbar .navbar-nav .nav-link i {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark);
+  border-radius: 40px;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover i,
+.sidebar .navbar .navbar-nav .nav-link.active i {
+  background: var(--secondary);
+}
+
+.sidebar .navbar .dropdown-toggle::after {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  transition: 0.5s;
+}
+
+.sidebar .navbar .dropdown-toggle[aria-expanded="true"]::after {
+  transform: rotate(-180deg);
+}
+
+.sidebar .navbar .dropdown-item {
+  padding-left: 25px;
+  border-radius: 0 30px 30px 0;
+  color: var(--light);
+}
+
+.sidebar .navbar .dropdown-item:hover,
+.sidebar .navbar .dropdown-item.active {
+  background: var(--dark);
+}
+
+.content .navbar .navbar-nav .nav-link {
+  margin-left: 25px;
+  padding: 12px 0;
+  color: var(--light);
+  outline: none;
+}
+
+.content .navbar .navbar-nav .nav-link:hover,
+.content .navbar .navbar-nav .nav-link.active {
+  color: var(--primary);
+}
+
+.content .navbar .sidebar-toggler,
+.content .navbar .navbar-nav .nav-link i {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark);
+  border-radius: 40px;
+}
+
+.content .navbar .dropdown-item {
+  color: var(--light);
+}
+
+.content .navbar .dropdown-item:hover,
+.content .navbar .dropdown-item.active {
+  background: var(--dark);
+}
+
+.content .navbar .dropdown-toggle::after {
+  margin-left: 6px;
+  vertical-align: middle;
+  border: none;
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  transition: 0.5s;
+}
+
+.content .navbar .dropdown-toggle[aria-expanded="true"]::after {
+  transform: rotate(-180deg);
+}
+
+@media (max-width: 575.98px) {
+  .content .navbar .navbar-nav .nav-link {
+    margin-left: 15px;
+  }
+}
+
+/*** Date Picker ***/
+.bootstrap-datetimepicker-widget.bottom {
+  top: auto !important;
+}
+
+.bootstrap-datetimepicker-widget .table * {
+  border-bottom-width: 0px;
+}
+
+.bootstrap-datetimepicker-widget .table th {
+  font-weight: 500;
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+  background: var(--primary);
+}
+
+.bootstrap-datetimepicker-widget table td.today::before {
+  border-bottom-color: var(--primary);
+}
+
+/*** Testimonial ***/
+.progress .progress-bar {
+  width: 0px;
+  transition: 2s;
+}
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-dots {
+  margin-top: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+  width: 15px;
+  height: 15px;
+  border: 5px solid var(--primary);
+  border-radius: 15px;
+  transition: 0.5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+  background: var(--dark);
+  border-color: var(--primary);
+}
