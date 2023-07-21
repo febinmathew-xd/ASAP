@@ -22,6 +22,7 @@ import Jobdetail from "./components/Jobdetail";
 import ViewNotifications from "./components/ViewNotifications";
 import ExamResults from "./components/ExamResults";
 import Enquiry from "./components/Enquiry";
+import Applications from "./components/Applications";
 function App() {
   const usertype = localStorage.getItem("usertype");
 
@@ -54,6 +55,7 @@ function App() {
             <Route path="vaccancies" element={<Vaccancies />}></Route>
             <Route path="jobs" element={<Jobs />}></Route>
             <Route path="jobdetail" element={<Jobdetail />}></Route>
+            <Route path='applications' element={<Applications/>}></Route>
           </Routes>
         ) : (
           <Routes>

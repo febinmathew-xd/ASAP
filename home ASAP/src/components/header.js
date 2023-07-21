@@ -110,9 +110,16 @@ function Header() {
                       )}
 
                       {usertype == 4 ? (
+                        <>
                         <li>
                           <NavLink to="/vaccancies">Vaccancies</NavLink>
                         </li>
+
+                        <li>
+                          <NavLink to="/applications">Applications</NavLink>
+                        </li>
+                        </>
+                        
                       ) : (
                         ""
                       )}

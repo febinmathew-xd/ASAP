@@ -62,3 +62,6 @@ Route::post('getMessagesByUserId', [StudentController::class, 'getMessagesByUser
 Route::post('getmessagesbystudentid', [StudentController::class, 'getMessagesByStudentId']);
 Route::post('getenquirybystudentid', [StudentController::class, 'getQueryByStudentId']);
 Route::post('getAllEnquiry', [StudentController::class, 'getAllEnquiry']);
+
+
+Route::post('getApplicationByCorpId', [StudentController::class, 'getApplicationByCorpId']);

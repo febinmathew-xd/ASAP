@@ -1,12 +1,15 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "./footer";
 import Header from "./header";
 import { useEffect, useState } from "react";
-import { Post } from "../Api";
+import { Post, handlefileupload } from "../Api";
 function Jobdetail() {
   const [details, setDetails] = useState([]);
+  const[file, setFile] = useState();
+  
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     Post("getbyid", { tablename: "vaccancies", id: location.state.id }).then(
@@ -15,6 +18,28 @@ function Jobdetail() {
       }
     );
   }, []);
+
+
+  const savefile = (file) => {
+    
+    handlefileupload(file).then((data)=> {
+      setFile(data);
+    })
+  };
+  const save = () => { 
+    const userdata = JSON.parse(localStorage.getItem('userdata'))
+      let param={
+        tablename: 'applications',
+        resume:file,
+        studentid: userdata.loginid,
+        vacancyid: location.state.id
+      };
+
+
+      Post('save', param).then((data)=> {
+        navigate('/jobs');
+      })
+  };
 
   return (
     <>
@@ -49,7 +74,7 @@ function Jobdetail() {
                   <label for="recipient-name" className="col-form-label">
                     Add Your Resume:
                   </label>
-                  <input
+                  <input onChange={(event)=> {savefile(event.target.files[0])}}
                     type="file"
                     className="form-control"
                     id="recipient-name"
@@ -65,7 +90,7 @@ function Jobdetail() {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-success">
+              <button onClick={save} type="button" className="btn btn-success">
                 Apply
               </button>
             </div>
