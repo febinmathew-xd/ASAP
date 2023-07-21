@@ -16,7 +16,7 @@ function ApplicationCard({application}) {
     <h6 style={{color:'black' ,opacity:'0.6'}}><span>Qualification : </span>{qualification}</h6>
     <h6 style={{color:'black' ,opacity:'0.6'}}><span>Applied for : </span>{title}</h6>
     <a  href={fileurl+resume} target='_blank'>
-        <button style={{backgroundColor:'#0ea5e9', padding:"4px 15px", borderRadius:'10px', fontWeight:'700', fontSize:'14px'}}>View Resume</button>
+        <button style={{backgroundColor:'#0ea5e9', padding:"4px 15px", borderRadius:'10px', fontWeight:'400', fontSize:'14px'}}>View Resume</button>
     </a>
    </div>
    </div>
