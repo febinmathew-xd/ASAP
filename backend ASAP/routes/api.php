@@ -59,3 +59,6 @@ Route::get('getpayments', [StudentController::class, 'getPayments']);
 Route::post('getexamdetails', [StudentController::class, 'getExamDetails']);
 Route::post('getexamresults', [StudentController::class, 'getExamResults']);
 Route::post('getMessagesByUserId', [StudentController::class, 'getMessagesByUserId']);
+Route::post('getmessagesbystudentid', [StudentController::class, 'getMessagesByStudentId']);
+Route::post('getenquirybystudentid', [StudentController::class, 'getQueryByStudentId']);
+Route::post('getAllEnquiry', [StudentController::class, 'getAllEnquiry']);

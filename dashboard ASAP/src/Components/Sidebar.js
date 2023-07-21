@@ -99,6 +99,19 @@ function Sidebar() {
             >
               <i className="fa fa-tachometer-alt me-2"></i>Payments
             </NavLink>
+
+
+            <NavLink
+              activeclassname="active"
+              to="/enquiry"
+              className="nav-item nav-link  "
+            >
+              <i className="fa fa-tachometer-alt me-2"></i>Enquiry
+            </NavLink>
+
+
+
+
             {/* <NavLink
               activeclassname="active"
               to="/CampusView"

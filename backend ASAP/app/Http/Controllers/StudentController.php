@@ -79,12 +79,32 @@ class StudentController extends Controller
     }
 
 
-    public function getMessagesByCourseId(Request $request){
+    public function getMessagesByStudentId(Request $request){
         $result = DB::table('messages')
         ->select('messages.message','student.username','student.loginid','messages.userid','messages.hostid')
         ->leftJoin('student','student.loginid','messages.userid')
-        ->where('messages.courseid',$request->courseid)
+        ->where('messages.userid',$request->id)
+        ->orWhere('messages.hostid',$request->id)
         ->orderBy('messages.id')
+        ->get();
+
+        echo json_encode($result);
+    }
+
+    public function getQueryByStudentId(Request $request){
+        $result = DB::table('enquiry')
+        ->where('enquiry.studentid', $request->studentid)
+        ->orderBy('enquiry.id', 'desc')
+        ->get();
+
+        echo json_encode($result);
+    }
+
+    public function getAllEnquiry(Request $request){
+        $result = DB::table('enquiry')
+        ->select('*', 'enquiry.id as enquiryid')
+        ->join('student', 'student.loginid', 'enquiry.studentid')
+        ->join('login', 'login.id', 'enquiry.studentid')
         ->get();
 
         echo json_encode($result);

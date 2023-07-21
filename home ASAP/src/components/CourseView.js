@@ -5,16 +5,18 @@ import { Post, fileurl } from "../Api";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MessageBox from "./MessageBox";
 function CourseView() {
   const [course, setCourse] = useState();
   const [tutorials, setTutorials] = useState([]);
   const [isloading, setIsloading] = useState(true);
   const [refresh, setRefresh] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
-  const [inputMessage, setInputMessage] = useState('');
+ 
   const [messages, setMessages] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
+  const id = location.state.id;
   
   useEffect(() => {
     let param = {
@@ -35,18 +37,6 @@ function CourseView() {
       setTutorials(data);
     });
 
-  /* FETCHING MESSAGES */
-  const user = JSON.parse(localStorage.getItem("userdata"));
-
-  let messParam = {
-    tablename:'messages',
-    id:user.loginid
-  }
-
-  Post('getMessagesByUserId',messParam).then((data)=> {
-    setMessages(data);
-    console.log(data);
-  })
 
 
 
@@ -74,19 +64,14 @@ function CourseView() {
     });
   };
 
-  const saveMessage = () => {
+  const saveoMessage = () => { 
     const userdata = JSON.parse(localStorage.getItem("userdata"));
 
-    let param = {
-      tablename:'messages',
-      courseid: location.state.id,
-      userid: userdata.loginid,
-      message:inputMessage,
-    }
+    
 
-  Post('save',param).then((data)=> {
+  Post('save').then((data)=> {
     setRefresh(refresh+1);
-    navigate('/')
+    
 
   });
   };
@@ -187,48 +172,7 @@ function CourseView() {
             {/* DOUBT CHAT CONTAINER */}
 
           {showMessage && 
-            <div className="question-container" style={{width:'500px', height:'400px', backgroundColor:'whitesmoke', marginTop:'30px', borderRadius:'10px', paddingTop:'20px'}}>
-
-              {/* MESSAGE CONTAINER */}
-
-              <div className="message-container" style={{width:'100%', height:'100%', overflowY:"scroll" }}>
-              
-              <div style={{ backgroundColor:'#bae6fd', marginLeft:'18px',marginBottom:'10px', padding:'5px 10px', width:'400px', borderRadius:'10px'}}>
-                <p style={{color:'black', fontWeight:'600', marginRight:'5px', opacity:'0.7'}}>You : </p>
-                <p>I have doubt in second secession</p>
-              </div>
-              <div style={{ backgroundColor:'#bae6fd', marginLeft:'18px',marginBottom:'10px', padding:'5px 10px', width:'400px', borderRadius:'10px'}}>
-                <p style={{color:'black', fontWeight:'600', marginRight:'5px', opacity:'0.7'}}>You : </p>
-                <p>I have doubt in second secession</p>
-              </div>
-
-              <div style={{ backgroundColor:'#fecaca', marginLeft:'18px',marginBottom:'10px', padding:'5px 10px', width:'400px', borderRadius:'10px'}}>
-                <p style={{color:'black', fontWeight:'600', marginRight:'5px', opacity:'0.7'}}>Tutor : </p>
-                <p>I have doubt in second secession ndf fnfkd dlfnkldf dlfdklf dfklfdfndk dfd dkd dfknkldf fkl</p>
-              </div>
-
-
-              <div style={{ backgroundColor:'#fecaca', marginLeft:'18px',marginBottom:'10px', padding:'5px 10px', width:'400px', borderRadius:'10px'}}>
-                <p style={{color:'black', fontWeight:'600', marginRight:'5px', opacity:'0.7'}}>Tutor : </p>
-                <p>I have doubt in second secession ndf fnfkd dlfnkldf dlfdklf dfklfdfndk dfd dkd dfknkldf fkl</p>
-              </div>
-
-
-             
-
-              </div>
-
-              <div>
-
-              <input onChange={(event) => {setInputMessage(event.target.value)}} type="text" placeholder="Ask Doubts" style={{color:'black', border:'1px solid black', marginLeft:'18px', width:'400px', borderRadius:'10px', height:'30px',marginBottom:'18px',marginTop:'10px', backgroundColor:'#dbeafe'}} />
-
-              <input onClick={saveMessage}  type="button" value='sent' style={{backgroundColor:'white', padding:'4px 15px', marginLeft:'10px', borderRadius:'7px', fontSize:'14px', fontWeight:'600'}}/>
-
-              </div>
-              
-
-          
-            </div>
+            <MessageBox id={id} />
             }
 
           </div>

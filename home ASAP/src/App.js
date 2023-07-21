@@ -21,6 +21,7 @@ import Certificate from "./components/Certificate";
 import Jobdetail from "./components/Jobdetail";
 import ViewNotifications from "./components/ViewNotifications";
 import ExamResults from "./components/ExamResults";
+import Enquiry from "./components/Enquiry";
 function App() {
   const usertype = localStorage.getItem("usertype");
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="certificate" element={<Certificate />}></Route>
             <Route path="notifications" element={<ViewNotifications />}></Route>
             <Route path="results" element={<ExamResults />}></Route>
+            <Route path="enquiry" element={<Enquiry/>}></Route>
           </Routes>
         ) : usertype == 4 ? (
           <Routes>

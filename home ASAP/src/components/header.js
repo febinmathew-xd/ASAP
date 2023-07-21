@@ -101,6 +101,9 @@ function Header() {
                           <li>
                             <NavLink to="/results">Exams</NavLink>
                           </li>
+                          <li>
+                            <NavLink to="/enquiry">Enquiry</NavLink>
+                          </li>
                         </>
                       ) : (
                         ""

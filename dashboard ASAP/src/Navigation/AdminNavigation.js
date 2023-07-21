@@ -26,6 +26,7 @@ import JobadminView from "../Components/JobadminView";
 import JobadminAdd from "../Components/JobadminAdd";
 import JobadminEdit from "../Components/JobadminEdit";
 import PaymentsView from "../Components/PaymentsView";
+import Enquiry from "../Components/Enquiry";
 function AdminNavigation() {
   const { isAuthenticated } = useContext(AuthenticationContext);
 
@@ -53,6 +54,7 @@ function AdminNavigation() {
         <Route path="/jobadminadd" element={<JobadminAdd />} />
         <Route path="/jobadminedit" element={<JobadminEdit />} />
         <Route path="/payments" element={<PaymentsView />} />
+        <Route path='/enquiry' element={<Enquiry/>} />
       </Routes>
     </>
   );
