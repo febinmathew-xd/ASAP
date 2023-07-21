@@ -26,7 +26,7 @@ const AuthenticationContextProvider = ({ children }) => {
     } else if (info?.usertype == 4) {
       setUser("corporate");
     } else if (info?.usertype == 6) {
-      setUser("corporate");
+      setUser("jobadmin");
     }
   }, []);
 
@@ -60,6 +60,7 @@ const AuthenticationContextProvider = ({ children }) => {
         return false;
       } else if (data.usertype == 6) {
         setUser("jobadmin");
+        localStorage.setItem("userdata", JSON.stringify(data));
       }
     });
     setisLoading(true);

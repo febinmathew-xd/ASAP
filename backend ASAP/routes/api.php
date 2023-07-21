@@ -65,3 +65,5 @@ Route::post('getAllEnquiry', [StudentController::class, 'getAllEnquiry']);
 
 
 Route::post('getApplicationByCorpId', [StudentController::class, 'getApplicationByCorpId']);
+
+Route::post('getAllApplications', [StudentController::class, 'getAllApplications']);

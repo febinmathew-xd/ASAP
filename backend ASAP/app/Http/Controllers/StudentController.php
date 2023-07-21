@@ -119,5 +119,13 @@ class StudentController extends Controller
 
         echo json_encode($result);
     }
+    public function getAllApplications (Request $request){
+        $result = DB::table('applications')
+        ->join('vaccancies', 'vaccancies.id', '=', 'applications.vacancyid')
+        ->join('student','student.loginid', '=', 'applications.studentid')
+         ->get();
+
+        echo json_encode($result);
+    }
 
 }

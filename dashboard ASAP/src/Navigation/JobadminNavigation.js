@@ -25,6 +25,7 @@ import AddTutorial from "../Components/TeacherView/AddTutotial";
 import JobadminView from "../Components/JobadminView";
 import JobadminAdd from "../Components/JobadminAdd";
 import JobadminEdit from "../Components/JobadminEdit";
+import ViewApplicants from "../component/ViewApplicants";
 
 function JobAdminNavigation() {
   const { isAuthenticated } = useContext(AuthenticationContext);
@@ -33,7 +34,7 @@ function JobAdminNavigation() {
     <>
       <Routes>
         <Route path="/" element={<TeacherView />} />
-        <Route path="/addteacher" element={<AddTeacher />} />
+        <Route path="/addteacher" element={<AddTeacher />} />l
         <Route path="/editteacher" element={<EditTeacher />} />
         <Route path="/cordinatorview" element={<CordinatorView />} />
         <Route path="/addcordinator" element={<Addcordinator />} />
@@ -52,6 +53,7 @@ function JobAdminNavigation() {
         <Route path="/jobadminview" element={<JobadminView />} />
         <Route path="/jobadminadd" element={<JobadminAdd />} />
         <Route path="/jobadminedit" element={<JobadminEdit />} />
+        <Route path="/viewapplicants" element={<ViewApplicants/>} />
       </Routes>
     </>
   );

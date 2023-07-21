@@ -6,7 +6,7 @@ function ApplicationCard({application}) {
     const {username, age, contact, qualification, title, resume} = application;
   return (
    <>
-   <div style={{width:'650px', height:'300px', backgroundColor:'white', marginLeft:'30px',borderRadius:'10px', display:'flex', justifyContent:'space-between', alignItems:'center', padding:'1px 30px', marginBottom:'30px'}}>
+   <div style={{width:'200px', height:'200px', backgroundColor:'white', marginLeft:'30px',borderRadius:'10px', display:'flex', justifyContent:'space-between', alignItems:'center', padding:'1px 30px', marginBottom:'30px'}}>
    <img src={fileurl+resume} style={{borderRadius:'10px', boxShadow:' rgba(0, 0, 0, 0.24) 0px 3px 8px'}} width={210} height={210} alt="" />
    
    <div style={{display:'flex', flexDirection:'column', alignItems:"flex-start", flexGrow:'1', marginLeft:'40px', height:'210px', justifyContent:"space-around"}}>
